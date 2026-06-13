@@ -1,0 +1,43 @@
+// Loop control: for / while with break and continue, plus the range() helper.
+
+// break: find the first number above 20 divisible by 7.
+for (let i = 21; i < 100; i = i + 1) {
+    if (i % 7 == 0) {
+        print i;       // 21
+        break;
+    }
+}
+
+// continue: sum only the odd numbers from 1..10.
+let oddSum = 0;
+for (let i = 1; i <= 10; i = i + 1) {
+    if (i % 2 == 0) { continue; }
+    oddSum = oddSum + i;
+}
+print oddSum;          // 25
+
+// while + break: a manual countdown that stops early.
+let n = 10;
+while (true) {
+    n = n - 1;
+    if (n == 5) { break; }
+}
+print n;               // 5
+
+// range() makes counting loops concise.
+let squares = [];
+let r = range(1, 8);
+for (let i = 0; i < len(r); i = i + 1) {
+    push(squares, r[i] * r[i]);
+}
+print squares;         // [1, 4, 9, 16, 25, 36, 49]
+
+// Nested loops: collect coordinate pairs, skipping the diagonal.
+let pairs = [];
+for (let a = 0; a < 3; a = a + 1) {
+    for (let b = 0; b < 3; b = b + 1) {
+        if (a == b) { continue; }
+        push(pairs, [a, b]);
+    }
+}
+print pairs;           // [[0, 1], [0, 2], [1, 0], [1, 2], [2, 0], [2, 1]]

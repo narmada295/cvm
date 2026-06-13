@@ -1,0 +1,42 @@
+// Functions: parameters, return values, recursion, and composition.
+
+fn square(x) {
+    return x * x;
+}
+
+fn add(a, b) {
+    return a + b;
+}
+
+// Recursion: classic factorial.
+fn factorial(n) {
+    if (n <= 1) { return 1; }
+    return n * factorial(n - 1);
+}
+
+// Recursion: Fibonacci.
+fn fib(n) {
+    if (n < 2) { return n; }
+    return fib(n - 1) + fib(n - 2);
+}
+
+print square(9);          // 81
+print add(square(3), 1);  // 10  (nested calls)
+print factorial(6);       // 720
+print fib(10);            // 55
+
+// Functions are first-class values: store one in a variable and call it.
+let op = add;
+print op(100, 23);        // 123
+
+// Iterative sum using a loop and an accumulator.
+fn sumTo(limit) {
+    let total = 0;
+    let i = 1;
+    while (i <= limit) {
+        total = total + i;
+        i = i + 1;
+    }
+    return total;
+}
+print sumTo(100);         // 5050

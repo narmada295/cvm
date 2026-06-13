@@ -1,0 +1,27 @@
+// Variables, blocks/scoping, if/else, and while loops.
+let count = 0;
+
+while (count < 5) {
+    if (count % 2 == 0) {
+        print "even";
+    } else {
+        print "odd";
+    }
+    count = count + 1;
+}
+
+// Block scoping: `x` is a local that only exists inside the braces.
+{
+    let x = 100;
+    print x;       // 100
+}
+
+// FizzBuzz, 1..15 (note: chained else-if).
+let n = 1;
+while (n <= 15) {
+    if (n % 15 == 0) { print "FizzBuzz"; }
+    else if (n % 3 == 0) { print "Fizz"; }
+    else if (n % 5 == 0) { print "Buzz"; }
+    else { print n; }
+    n = n + 1;
+}

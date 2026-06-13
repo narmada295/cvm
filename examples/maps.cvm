@@ -1,0 +1,38 @@
+// Maps (dictionaries): string-keyed collections with literals and indexing.
+
+// A map literal. Keys may be quoted strings or bare identifiers.
+let person = { "name": "Ada", age: 36, active: true };
+print person;              // keys print in sorted order
+print person["name"];      // Ada
+
+// Read, update, and add entries by key.
+person["age"] = person["age"] + 1;
+print person["age"];       // 37
+person["role"] = "engineer";
+
+// Introspection via native functions.
+print keys(person);        // ["active", "age", "name", "role"]
+print len(person);         // 4
+print has(person, "role"); // true
+print has(person, "phone");// false
+
+remove(person, "active");
+print keys(person);        // ["age", "name", "role"]
+
+// Maps can nest and hold any value type, including arrays and functions.
+let config = {
+    "limits": { "max": 100, "min": 0 },
+    "tags": ["a", "b", "c"]
+};
+print config["limits"]["max"];  // 100
+print config["tags"][1];        // b
+
+// Use a map as a frequency counter over a string.
+let text = "mississippi";
+let counts = {};
+for (let i = 0; i < len(text); i = i + 1) {
+    let ch = text[i];
+    if (has(counts, ch)) { counts[ch] = counts[ch] + 1; }
+    else { counts[ch] = 1; }
+}
+print counts;   // {"i": 4, "m": 1, "p": 2, "s": 4}

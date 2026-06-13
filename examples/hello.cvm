@@ -1,0 +1,4 @@
+// The classic. Strings, numbers, and the print statement.
+print "Hello, CVM++!";
+print 40 + 2;
+print "concatenation " + "works too";

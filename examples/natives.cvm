@@ -1,0 +1,27 @@
+// Native (built-in) functions implemented in C++ and callable from CVM++.
+
+// Math.
+print sqrt(144);     // 12
+print abs(-7.5);     // 7.5
+print floor(3.99);   // 3
+
+// Length of strings and arrays.
+print len("hello");      // 5
+print len([1, 2, 3, 4]); // 4
+
+// Conversions between strings and numbers.
+print str(42) + " is the answer";  // "42 is the answer"
+print num("3.14") * 2;             // 6.28
+
+// String indexing returns a one-character string.
+let word = "CVM";
+for (let i = 0; i < len(word); i = i + 1) {
+    print word[i];     // C, V, M
+}
+
+// clock() measures elapsed seconds — handy for timing.
+let start = clock();
+let total = 0;
+for (let i = 0; i < 100000; i = i + 1) { total = total + i; }
+print total;                       // 4999950000
+print clock() - start >= 0;        // true (some time elapsed)

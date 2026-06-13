@@ -1,0 +1,45 @@
+// Closures: inner functions capture variables from their enclosing scope,
+// keep them alive after the outer function returns, and can mutate them.
+
+// 1. A counter that remembers and mutates its own private state.
+fn makeCounter() {
+    let count = 0;
+    fn increment() {
+        count = count + 1;   // mutates the captured `count`
+        return count;
+    }
+    return increment;
+}
+
+let c = makeCounter();
+print c();   // 1
+print c();   // 2
+print c();   // 3
+
+// Each call to makeCounter() produces an independent closure.
+let d = makeCounter();
+print d();   // 1   (fresh state)
+print c();   // 4   (the first counter is unaffected)
+
+// 2. A function factory that captures a parameter.
+fn adder(x) {
+    fn add(y) { return x + y; }
+    return add;
+}
+let add5 = adder(5);
+let add100 = adder(100);
+print add5(10);     // 15
+print add100(10);   // 110
+
+// 3. Two closures sharing the SAME captured variable.
+fn makeAccount(balance) {
+    fn deposit(amount) { balance = balance + amount; return balance; }
+    fn withdraw(amount) { balance = balance - amount; return balance; }
+    return [deposit, withdraw];
+}
+let account = makeAccount(100);
+let deposit = account[0];
+let withdraw = account[1];
+print deposit(50);   // 150
+print withdraw(30);  // 120   (shares `balance` with deposit)
+print deposit(10);   // 130

@@ -1,0 +1,14 @@
+# Build artifacts
+build/
+cvm
+
+# Object / dependency files (in case of in-tree builds)
+*.o
+*.d
+
+# Editor / OS cruft
+*.swp
+.DS_Store
+
+# Local tooling config (not part of the project)
+.claude/

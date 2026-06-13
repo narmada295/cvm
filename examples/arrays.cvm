@@ -1,0 +1,39 @@
+// Arrays: literals, indexing, mutation, growth, and iteration with `for`.
+
+let nums = [3, 1, 4, 1, 5, 9, 2, 6];
+print nums;            // [3, 1, 4, 1, 5, 9, 2, 6]
+print len(nums);       // 8
+print nums[0] + nums[5]; // 12
+
+// In-place mutation by index.
+nums[0] = 100;
+print nums[0];         // 100
+
+// Grow and shrink with the push/pop native functions.
+push(nums, 42);
+print len(nums);       // 9
+print pop(nums);       // 42
+print len(nums);       // 8
+
+// Iterate with a for-loop to compute a sum and a max.
+let sum = 0;
+let max = nums[0];
+for (let i = 0; i < len(nums); i = i + 1) {
+    sum = sum + nums[i];
+    if (nums[i] > max) { max = nums[i]; }
+}
+print sum;             // 128
+print max;             // 100
+
+// Arrays can hold mixed types, including other arrays.
+let mixed = [1, "two", true, nil, [10, 20]];
+print mixed;
+print mixed[1];        // two
+print mixed[4][1];     // 20
+
+// Build an array of squares using a loop.
+let squares = [];
+for (let n = 1; n <= 6; n = n + 1) {
+    push(squares, n * n);
+}
+print squares;         // [1, 4, 9, 16, 25, 36]
